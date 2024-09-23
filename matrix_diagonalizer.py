@@ -2,25 +2,25 @@ import sympy as sp
 import numpy as np
 
 
-def diagonalize_matrix(M: sp.Matrix) -> None:
+def diagonalize_matrix(sp_M: sp.Matrix) -> None:
     """Print eigenvalues, eigenvectors and diagonalized matrix properties.
     
     Args:
         M: The input matrix as sympy matrix
     """
     # Define the matrix M
-    np_M = np.array(M).astype(np.float64)
+    np_M = np.array(sp_M).astype(np.float64)
     print("\nDiagonalizing matrix\nM = ")
-    sp.pprint(M)
+    sp.pprint(sp_M)
 
     # Print eigenvalues and eigenvectors
     num_eigvals, num_eigvects = np.linalg.eig(np_M)
     print(f"\nNumerical eigenvalues: {sorted(list(num_eigvals))}")
     print("\nEigenvalue, alg #, eigenvector:")
-    sp.pprint(M.eigenvects())
+    sp.pprint(sp_M.eigenvects())
 
     # Print diagonalized decomposition
-    P1, D1 = M.diagonalize()
+    P1, D1 = sp_M.diagonalize()
     print("\nDecomposition matrices M=P*D*P**-1:")
     print("\nP=")
     sp.pprint(P1)
